@@ -57,3 +57,111 @@
 // we think of a separate file.
 // So of course a module always contains some code
 // but it can also have imports and exports.
+
+///////////////////////////////////////////////////////////////////
+// Exporting and Importing in ES6 Modules
+///////////////////////////////////////////////////////////////////
+
+// Importing module
+
+// But again with named imports,
+// you have to give them here the same name,
+// and you actually have to put them
+// inside curly braces like this.
+// And so now here we are able to call this function
+
+// import { addToCart, totalPrice as price, tq } from './shoppingCart.js';
+// addToCart('bread', 5);
+// console.log(price, tq);
+
+console.log('Importing module');
+// // console.log(shippingCost);
+
+// Named Imports
+
+// And actually we can take this importing even further,
+// because we can also import all the exports
+// of a module at the same time.
+// So that's import and then everything.
+// So that's usually the meaning of the star,
+// into an object like this.
+
+// So basically, this year we'll create an object
+// containing everything that is exported from the module
+// that we will specify here.
+
+// And so basically if we think about this,
+// this module here is now basically exporting a public API,
+// just like a class.
+// So it's as if this object here,
+// was an object created from a class,
+// which now has these methods,
+// and also, for example these properties,
+// like shoppingcart.total price.
+// Right?,
+// So that's the other Named Export from this module.
+// Now of course we are not trying
+// to replace classes with modules.
+// I just wanted to turn your attention to the fact,
+// that some things here look pretty similar indeed.
+// Right?,
+// And actually we can say daddy module exports,
+// kind of a public API,
+// because everything else of course stays private
+// inside of the module.
+// import * as ShoppingCart from './shoppingCart.js';
+// ShoppingCart.addToCart('bread', 5);
+// console.log(ShoppingCart.totalPrice);
+
+// // == Default import,===
+
+// And so then when we import it
+// we can basically give it any name that we want.
+
+// However in practice, we usually never mix
+// Named and Default Exports in the same module.
+// import add, { addToCart, totalPrice as price, tq } from './shoppingCart.js';
+// console.log(price);
+
+// So the preferred style is actually
+// to just use one default expert per module,
+// and then import that here like we did.
+// And in fact, that's the reason why
+// it is easier to import a Default Exports.
+// So here we don't even need to use the curly braces,
+// and the designers of the specification, did that on purpose.
+// So again, to make it easier, to import default exports
+// but of course that's not a rigid rule,
+// that we always need to follow,
+// so, we can do whatever is best for any given situation.
+
+import add, { cart } from './shoppingCart.js'; //combine name and defualts for demo of live connection
+add('pizza', 2);
+add('bread', 5);
+add('apples', 4);
+
+console.log(cart);
+
+// So one more time, repeat it with me,
+// imports are not copies of the export.
+// They are instead like a live connection,
+// and so what that means is that I point to the same place
+// in memory,
+// because again, otherwise, if it was a copy
+// then here, we would not get anything in the array.
+// And so keep this in mind,
+// when you write your own programs
+// because this can of course leads to bugs,
+// if you don't know what you're doing,
+// and if you don't know that this is how it actually works.
+// All right?
+// And so with this, we actually finished this video
+// which was a pretty important one,
+// because this is the foundation
+// of how we organize a modern JavaScript code base.
+// So make sure to review this lecture thoroughly,
+// and I would actually like you to play
+// around a little bit on your own,
+// with exporting and importing some more values
+// like we just did here.
+// And after that, I see you then in the next video.
