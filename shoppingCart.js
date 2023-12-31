@@ -1,6 +1,21 @@
 // Exporting module
 console.log('Exporting module');
 
+// // So this top-level await that we have here is
+// // in fact blocking the execution, not only in this module,
+// // but also in the module that is importing it.
+// // So again, it's very important to remember
+// // that using top-level await,
+// // so await outside of any async function
+// // will block the entire module in a way
+// // that we really couldn't block code execution before.
+// // And so this is not only a really helpful tool,
+// // but also one that we need to use with great care.
+// //===== Blocking code
+// console.log('Start fetching users');
+// await fetch(`https://jsonplaceholder.typicode.com/users`);
+// console.log('Finish fetching users');
+
 // Now variables that are declared inside of a module,
 // So just like these two ones here,
 // are actually sculpt to this module.
