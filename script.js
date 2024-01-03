@@ -630,118 +630,343 @@
 ////////////////////////////////////////////////////////////
 //see video lecture
 
-// So, let's now finally use NPM for the first time.
-// And remember, NPM stands for Node Package Manager,
-// and it's both a software on our computer
-// and a package repository.
-// Now, before we jump straight into NPM, let's start
-// by understanding why we actually need something like NPM.
-// So, why do we actually need a way of managing packages
-// or dependencies in our project?
+// // So, let's now finally use NPM for the first time.
+// // And remember, NPM stands for Node Package Manager,
+// // and it's both a software on our computer
+// // and a package repository.
+// // Now, before we jump straight into NPM, let's start
+// // by understanding why we actually need something like NPM.
+// // So, why do we actually need a way of managing packages
+// // or dependencies in our project?
 
-// Well, back in the day before we had NPM,
-// we used to include external libraries right into our HTML.
-// So, basically using the script tag.
-// And this would then expose a global variable
-// that we could use, and actually that's exactly
-// what we did earlier in our Mapty project.
+// // Well, back in the day before we had NPM,
+// // we used to include external libraries right into our HTML.
+// // So, basically using the script tag.
+// // And this would then expose a global variable
+// // that we could use, and actually that's exactly
+// // what we did earlier in our Mapty project.
 
-// So, let's actually use or open that here.
-// So, Mapty and just the index.html file.
-// And so here it is, and you see that indeed,
-// we simply included the leaflet.js file basically using
-// a script tag and did that before or own script
-// so that our own script could then use the global variable
-// that was exposed by this library here, right?
+// // So, let's actually use or open that here.
+// // So, Mapty and just the index.html file.
+// // And so here it is, and you see that indeed,
+// // we simply included the leaflet.js file basically using
+// // a script tag and did that before or own script
+// // so that our own script could then use the global variable
+// // that was exposed by this library here, right?
 
-// Remember that?
-// Now, this actually creates a couple of problems,
-// at least in a big project so maybe not
-// in this particular project that is really small,
-// but in a huge project and a huge team,
-// this is just not manageable.
+// // Remember that?
+// // Now, this actually creates a couple of problems,
+// // at least in a big project so maybe not
+// // in this particular project that is really small,
+// // but in a huge project and a huge team,
+// // this is just not manageable.
 
-// First, it doesn't make much sense having the HTML loading
-// all of JavaScript, that is just really messy.
-// Also many times we would actually download a library file
-// to our computer directly, for example,
-// a jQuery JavaScript file.
-// But then whenever a new version would come out,
-// we would have to manually go to the site,
-// download the new version,
-// change the file in our file system manually,
-// and then include it here again, maybe with some other name,
-// with some other version number.
-// And that was just a huge pain, believe me.
+// // First, it doesn't make much sense having the HTML loading
+// // all of JavaScript, that is just really messy.
+// // Also many times we would actually download a library file
+// // to our computer directly, for example,
+// // a jQuery JavaScript file.
+// // But then whenever a new version would come out,
+// // we would have to manually go to the site,
+// // download the new version,
+// // change the file in our file system manually,
+// // and then include it here again, maybe with some other name,
+// // with some other version number.
+// // And that was just a huge pain, believe me.
 
-// And a third reason is that before NPM, there simply wasn't
-// a single repository that contained all the packages
-// that we might need.
-// And so this made it even worse and more difficult
-// to manually download libraries and manage them
-// on our computers.
+// // And a third reason is that before NPM, there simply wasn't
+// // a single repository that contained all the packages
+// // that we might need.
+// // And so this made it even worse and more difficult
+// // to manually download libraries and manage them
+// // on our computers.
 
-// So in summary, this all used to be a huge pain
-// and a huge mess.
-// And maybe you even remember this yourself,
-// like the old days of jQuery and dozens of jQuery plugins
-// that you would have to keep updated.
+// // So in summary, this all used to be a huge pain
+// // and a huge mess.
+// // And maybe you even remember this yourself,
+// // like the old days of jQuery and dozens of jQuery plugins
+// // that you would have to keep updated.
 
-// But anyway, all of this is just to say that we really need
-// a way to manage our dependencies in a better
-// and more modern way.
+// // But anyway, all of this is just to say that we really need
+// // a way to manage our dependencies in a better
+// // and more modern way.
 
-// And NPM is exactly how we do that.
-// And so, let's start by using the NPM software now.
-// Now right, so actually we will need to this terminal now,
+// // And NPM is exactly how we do that.
+// // And so, let's start by using the NPM software now.
+// // Now right, so actually we will need to this terminal now,
 
-//====
-// Okay, so we installed our leaflet library now,
-// but if we wanted to use it,
-// that wouldn't be easy without a module bundler.
-// And that's because this library actually uses
-// the common JS module system.
-// So for the reasons that I explained to you before,
-// and so therefore we cannot directly import it into our code.
-// We could only do that if later we used a module bundler,
-// but for now we are not doing that.
-// And so, let's just not use leaflet for now.
-// So, this was just to show you how to install it.
+// //====
+// // Okay, so we installed our leaflet library now,
+// // but if we wanted to use it,
+// // that wouldn't be easy without a module bundler.
+// // And that's because this library actually uses
+// // the common JS module system.
+// // So for the reasons that I explained to you before,
+// // and so therefore we cannot directly import it into our code.
+// // We could only do that if later we used a module bundler,
+// // but for now we are not doing that.
+// // And so, let's just not use leaflet for now.
+// // So, this was just to show you how to install it.
 
-// So instead, let me show you how we can install
-// and import one of the most popular JavaScript libraries,
-// which is Lodash.
-// So Lodash, like this and Lodash is essentially
-// a collection of a ton of useful functions for erase,
-// objects, functions, dates, and more.
-// So, it's a lot of like functions that could
-// or should be included in JavaScript, but are not.
-// And so people simply implemented them in Lodash,
-// and so now we can use them.
-// So, down here we have to installation
-// and here you see again, the old way of doing it
-// as I explained it before.
-// So, that would be downloading it
-// and then including it manually.
-// Then here we have the NPM way, but there also should be
-// something else here I'm looking for,
+// // So instead, let me show you how we can install
+// // and import one of the most popular JavaScript libraries,
+// // which is Lodash.
+// // So Lodash, like this and Lodash is essentially
+// // a collection of a ton of useful functions for erase,
+// // objects, functions, dates, and more.
+// // So, it's a lot of like functions that could
+// // or should be included in JavaScript, but are not.
+// // And so people simply implemented them in Lodash,
+// // and so now we can use them.
+// // So, down here we have to installation
+// // and here you see again, the old way of doing it
+// // as I explained it before.
+// // So, that would be downloading it
+// // and then including it manually.
+// // Then here we have the NPM way, but there also should be
+// // something else here I'm looking for,
 
-// but here is how we actually install it using NPM.
-// So as always, NPM install and then Lodash.
-// However, I'm not looking for just the normal Lodash version,
-// because once again, that one actually uses common JS.
-// And so we can't use common JS modules without
-// a module bundler.
-// And so I'm looking for a special version
-// and that one is called Lodash-ES.
+// // but here is how we actually install it using NPM.
+// // So as always, NPM install and then Lodash.
+// // However, I'm not looking for just the normal Lodash version,
+// // because once again, that one actually uses common JS.
+// // And so we can't use common JS modules without
+// // a module bundler.
+// // And so I'm looking for a special version
+// // and that one is called Lodash-ES.
 
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 
-// Now, why did I actually include cloneDeep
-// and not something else?
-// Well, it's because I actually already mentioned Lodash
-// before when we talked about copying objects.
-// So, remember that it's very hard to copy a nested object.
+// // Now, why did I actually include cloneDeep
+// // and not something else?
+// // Well, it's because I actually already mentioned Lodash
+// // before when we talked about copying objects.
+// // So, remember that it's very hard to copy a nested object.
+
+// const state = {
+//   cart: [
+//     { product: 'bread', quantity: 5 },
+//     { product: 'pizza', quantity: 5 },
+//   ],
+//   user: { loggedIn: true },
+// };
+
+// // And so, let's see what happens
+// // when we copy it using JavaScript.
+// // So, state clone, and remember we use object.assign to create
+// // a copy of an object.
+// // And so we create an empty object and then we basically merge
+// // that with the state.
+// // So, let's take a look at the stateClone.
+// // And so indeed it looks exactly the same as the state, right?
+// const stateClone = Object.assign({}, state);
+// console.log(stateClone);
+
+// // However, what happens when we change one of
+// // the nested objects in there?
+// // state.user.loggedIn = false;
+// // console.log(stateClone);
+
+// // So, when we now say state dot user dot logged in
+// // and set it to false, then see what happens to the logged in,
+// // in the copy, so you see that it is also false.
+
+// // And so, that's for all the reasons
+// // that we already learned before.
+// // And so remember that back then I said
+// // that using Lodash would probably be a good idea,
+
+// // instead of using object dot assign,
+// // because if we wanted to manually create a deep copy
+// // or a deep clone, well, that would be a lot of work.
+// // And so instead we, can simply use this function
+// // that Lodash gives us so that
+// // some people already implement it for us
+// // and which is also battle tested already.
+
+// const stateDeepClone = cloneDeep(state);
+
+// state.user.loggedIn = false;
+// console.log(stateClone);
+
+// console.log(stateDeepClone);
+
+// // should work.
+// // So again, this one changed to false,
+// // but this one now is still true, even though we changed it
+// // in the original object, okay?
+
+// // And so this is a good solution for a deep clone
+// // that we just got from NPM.
+// // And that's great, right?
+// // So, we just used a piece of open source software to solve
+// // a problem that we have sometimes in JavaScript.
+// // Great, that's just awesome.
+// // So again, you're now one step closer to working like
+// // a real JavaScript developer,
+// // because this is just what everyone does all the time.
+// // So, this is the function that does the work,
+// // but actually it is this one here,
+// // but well, that's not inspected,
+// // but of course you can have some fun and take a look at
+// // how they implemented this, okay?
+
+// ////====
+// // But I actually want to go back to this package.json file
+// // because it is actually very important.
+
+// // So, let's say that you want to move your project
+// // to another computer, or also share it with another developer
+// // or even check it into version control like Git.
+// // Now in all of these scenarios, you should never ever include
+// // the node modules folder.
+
+// // So again, when you copy your project to somewhere else,
+// // there is no reason to include this huge node modules folder,
+// // because in a real project,
+// // it will actually be really, really huge.
+
+// // So, I have had a folders here with tens of thousands
+// // of files, and so that will just slow you down.
+// // And it doesn't make much sense either
+// // because all of these files, they are already at NPM.
+
+// // And so, you can always get them back from there.
+// // But now you might ask, well, if I copy my project without
+// // the node modules folder, so without the dependencies,
+// // will I have to install all of them, one by one?
+// // What if I have 20 or 200 dependencies?
+
+// // Well, that's again
+// // where this important package.json file comes into play.
+
+// // So, let's actually simulate that by deleting this node_modules folder.
+// // So, move to trash.
+// // And so now of course this does not work anymore,
+
+// // but there is fortunately a very easy way to get it back.
+// // All we have to do is NPM and then install or I,
+// // but just without any package name.
+
+// // npm install
+
+// // And so then, NPM will reach into your package.json file,
+// // look at all the dependencies and install them back.
+// // And so, you see that or folder, well, it should be back.
+// // And yeah, so here it is just like before.
+
+// //==
+// // And so with this, you now have a basic,
+// // but I think good understanding of how to work
+// // with NPM downloading packages and also include them
+// // in your code.
+
+// // However, importing packages like we did here, for example,
+// // by specifying this entire path is not practical at all.
+// // And so in the next video,
+// // it's time to finally use Parcel to fix this.
+
+/////////////////////////////////////////////////////////////////
+// Bundling With Parcel and NPM Scripts
+/////////////////////////////////////////////////////////////////
+
+// So the module bundler
+// that we're gonna use in this course is called Parcel.
+// And it's super fast and easy to use,
+// and, even more importantly,
+// it works out of the box without any configuration.
+
+// Now you might've heard of Webpack as well
+// which is probably the most popular bundler
+// and especially in react world.
+// However, it's way too complex to use in a course like this.
+
+// And so let's now learn how to use Parcel.
+// So Parcel is basically just another build tool
+// which is also on NPM.
+// And so we will use NPM to install it.
+// So NPM install Parcel
+// but this is now a different dependency.
+// And so here we have to write
+// dash, dash, safe, dev like this.
+// Okay?
+
+// // npm install parcel --save-dev
+
+// Then hit enter, and simply watch it install.
+// So a devDependency is basically like a tool
+// that we need to build our application.
+// But it's not a dependency
+// that we actually include in our code.
+// All right.
+
+// So it's simply a tool.
+// And so that's why it's called a devDependency
+// because we can use it to develop our project.
+// And so therefore it appears here in a new field,
+// in our package.json file.
+// So again, these libraries,
+// that we actually include in our code,
+// are the regular dependencies
+// and Parcel is a devDependency now, right?
+
+// So let's clear the console here and actually use Parcel.
+// So we do it here in the terminal
+// because Parcel is basically
+// just another command line interface.
+
+// However, we cannot simply run Parcel like this.
+// So this is not going to work
+// because the command is not found.
+// And the reason for that
+// is simply that this doesn't work
+// with locally installed packages.
+
+// And Parcel was indeed installed locally.
+// So basically only on this project
+// and that's why it showed up in the package.json file
+// of this exact project.
+// So there are also global installations
+// but more about that by the end of this video.
+
+// Now, in order to still be able to use Parcel
+// here in the console, we have two options.
+
+// So we can use something called NPX
+
+// or we can use NPM scripts.
+
+//===== 1 NPX
+
+// So let's start with NPX,
+// which is basically an application built into a NPM.
+// So the details don't matter.
+// But what does matter is that we can simply use NPX
+// to now run the same command as we did before,
+// but this time it is going to work.
+
+// npx parcel index.html
+
+// and the option that we pass into Parcel
+// basically is this entry point.
+// So the entry point is index.html
+// because that is where we include our script.js.
+// So basically the file that we want to bundle up.
+
+// And so basically in this example, the goal of using Parcel
+// is to bundle these three modules together.
+// So script.js together with shoppingCart.js
+// and together with this cloneDeep.
+
+import add, { cart } from './shoppingCart.js';
+add('pizza', 2);
+add('bread', 5);
+add('apples', 4);
+
+console.log(cart);
+
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+import cloneDeep from 'lodash-es';
 
 const state = {
   cart: [
@@ -751,38 +976,8 @@ const state = {
   user: { loggedIn: true },
 };
 
-// And so, let's see what happens
-// when we copy it using JavaScript.
-// So, state clone, and remember we use object.assign to create
-// a copy of an object.
-// And so we create an empty object and then we basically merge
-// that with the state.
-// So, let's take a look at the stateClone.
-// And so indeed it looks exactly the same as the state, right?
 const stateClone = Object.assign({}, state);
 console.log(stateClone);
-
-// However, what happens when we change one of
-// the nested objects in there?
-// state.user.loggedIn = false;
-// console.log(stateClone);
-
-// So, when we now say state dot user dot logged in
-// and set it to false, then see what happens to the logged in,
-// in the copy, so you see that it is also false.
-
-// And so, that's for all the reasons
-// that we already learned before.
-// And so remember that back then I said
-// that using Lodash would probably be a good idea,
-
-// instead of using object dot assign,
-// because if we wanted to manually create a deep copy
-// or a deep clone, well, that would be a lot of work.
-// And so instead we, can simply use this function
-// that Lodash gives us so that
-// some people already implement it for us
-// and which is also battle tested already.
 
 const stateDeepClone = cloneDeep(state);
 
@@ -791,77 +986,233 @@ console.log(stateClone);
 
 console.log(stateDeepClone);
 
-// should work.
-// So again, this one changed to false,
-// but this one now is still true, even though we changed it
-// in the original object, okay?
+// npx parcel index.html
 
-// And so this is a good solution for a deep clone
-// that we just got from NPM.
-// And that's great, right?
-// So, we just used a piece of open source software to solve
-// a problem that we have sometimes in JavaScript.
-// Great, that's just awesome.
-// So again, you're now one step closer to working like
-// a real JavaScript developer,
-// because this is just what everyone does all the time.
-// So, this is the function that does the work,
-// but actually it is this one here,
-// but well, that's not inspected,
-// but of course you can have some fun and take a look at
-// how they implemented this, okay?
+// So a Parcel actually then also starts
+// a new development server on this URL.
+// So let's click that.
 
-////====
-// But I actually want to go back to this package.json file
-// because it is actually very important.
+// However, in Parcel, we can activate something even better,
+// which is called hot module replacement.
+if (module.hot) {
+  module.hot.accept();
+}
 
-// So, let's say that you want to move your project
-// to another computer, or also share it with another developer
-// or even check it into version control like Git.
-// Now in all of these scenarios, you should never ever include
-// the node modules folder.
+// Now this code here is code that only Parcel understands.
+// And so of course it will not make it into our final bundle
+// because the browser is not going to understand any of it.
+// But anyway, what hot module reloading means
+// is that whenever we change one of the modules,
+// it will then, of course, trigger a rebuild, like this,
+// but that new modified bundle will then automatically,
+// like magic, get injected into the browser
+// without triggering a whole page reload.
 
-// So again, when you copy your project to somewhere else,
-// there is no reason to include this huge node modules folder,
-// because in a real project,
-// it will actually be really, really huge.
+// So again, whenever we change something here,
+// this will then not reload this part of the page.
+// And so that's going to be amazing
+// for maintaining state on our page
+// whenever we are testing out something.
+// So this used to be something quite annoying in the past.
+// For example, in our Bankist the application,
+// where whenever we reloaded the page,
+// we needed to log in again into the application.
+// Remember that?
+// But with Parcel and hot module replacement,
+// that's not going to happen,
+// because the page will not reload.
 
-// So, I have had a folders here with tens of thousands
-// of files, and so that will just slow you down.
-// And it doesn't make much sense either
-// because all of these files, they are already at NPM.
+// So if I save this now,
+// then probably it's going to look the same.
+// But again, if we had some state here on the page,
+// then that would be maintained.
 
-// And so, you can always get them back from there.
-// But now you might ask, well, if I copy my project without
-// the node modules folder, so without the dependencies,
-// will I have to install all of them, one by one?
-// What if I have 20 or 200 dependencies?
+// Okay, next up, let's change something here.
+// So as I said, when we first included this cloneDeep here,
+// from lodash, this is quite cumbersome doing it like this.
+// And so that's why in all module bundlers,
+// there's no need for specifying
+// the entire path to any module.
 
-// Well, that's again
-// where this important package.json file comes into play.
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 
-// So, let's actually simulate that by deleting this node_modules folder.
-// So, move to trash.
-// And so now of course this does not work anymore,
+// So instead we can simply do this.
+// So keeping this here just for reference,
+// and then all we need to say
+// is that we want to include the lodash library.
+// And so Parcel will then automatically
+// find the path to this module,
 
-// but there is fortunately a very easy way to get it back.
-// All we have to do is NPM and then install or I,
-// but just without any package name.
+// import cloneDeep from 'lodash-es';
 
-// npm install
+// and will simply import it like this
+// without us having to manually tie up
+// the entire path to there.
 
-// And so then, NPM will reach into your package.json file,
-// look at all the dependencies and install them back.
-// And so, you see that or folder, well, it should be back.
-// And yeah, so here it is just like before.
+// And so that's a lot more useful than what we had before.
+// And in fact, this works with all kinds of assets.
+// So even with HTML or CSS or SAS files,
+// or even images, and of course also all kinds of modules.
+// So not only ESX modules,
+// but this is also going to work with CommonJS modules.
 
-//==
-// And so with this, you now have a basic,
-// but I think good understanding of how to work
-// with NPM downloading packages and also include them
-// in your code.
+// So let me actually show that to you.
+// So instead of importing a DES version of lodash,
+// we can simply import lodash like this.
+// So just a regular version of lodash
+// and Parcel is even smart enough
+// to then automatically install this package here.
+// Okay.
 
-// However, importing packages like we did here, for example,
-// by specifying this entire path is not practical at all.
-// And so in the next video,
-// it's time to finally use Parcel to fix this.
+// import cloneDeep from 'lodash';
+
+// So Parcel can indeed work
+// with all the CommonJS modules as well.
+// And so this way we can then simply use
+// all the modules that are available on NPM
+// and which still use this older module format.
+// So let's leave it like this, save it again.
+
+// And maybe you have been noticing that this cart right here
+// keeps growing and growing and growing.
+// So if we take a look at this,
+// you see that we are adding these three products
+// over and over again.
+// And so the reason for that is hot module replacement.
+// So the state is maintained whenever we reload the page here.
+// And so that's exactly what we can now observe here.
+// Okay.
+
+// So if we save it again, then we will have 15
+// because we are simply adding new objects into this object
+// that keeps persisting over page reloads, basically.
+// And so this works with all state,
+// and again, it's going to be really, really helpful.
+// Okay.
+
+// So this is how Parcel works and let me know, finish it here
+// because remember the way we executed Parcel first
+// was by saying a NPX Parcel and then index.html.
+
+//===== 2 NPM
+// However, I mentioned that there is a second way,
+// which is to use NPM script.
+// And so that's the way we actually use it in practice.
+// So NPM scripts are basically another way
+// of running a locally installed packages in the command line.
+// They also allow us to basically automate repetitive tasks.
+// And so therefore we then don't have to write NPX Parcel
+// and all of that, every time that we want to use it.
+
+// in package.json
+// "scripts": {
+//   "test": "echo \"Error: no test specified\" && exit 1"
+// },
+
+// So we can simply create a script here,
+// and let me delete this one here,
+// let me just delete all of it and create a new one.
+// So we need to double quote and then the name of the script
+// and the default is start here,
+// and then here comes the script itself.
+// And so the script is going to
+// be simply Parcel index.html.
+
+// "scripts": {
+//   "start": "parcel index.html"
+// },
+
+// So again, we can't write this command
+// directly in the command line,
+// but we can write it in the NPM script.
+// And so let's now go back to our console
+// and try it out and actually run this command.
+// NPM run and then start.
+// And so start is the name of the NPM script
+// that we defined here.
+// So let's try that.
+// And here we go.
+
+// npm run start
+
+// So it's doing the same thing as before
+// but now we have the simple command
+// that we can execute whenever we want to start Parcel
+// and whenever we want to start developing, basically.
+// And so again, that is mainly how we do it in development.
+// Okay.
+
+// And speaking of development,
+// whenever we are done developing our project,
+// it is time to build the final bundle.
+// So the bundle that is compressed
+// and has dead code elimination and all of that.
+// And so for that, we need another Parcel command.
+// And so let's add that as another script here.
+// So we need to come up
+// and then this one will be called build.
+// And so Parcel, build, and then again, index.html.
+
+// "scripts": {
+//   "start": "parcel index.html",
+//   "build": "parcel build index.html"
+// },
+
+// So let's stop this one here actually,
+// and now let's run NPM run build.
+
+// npm run build
+
+// So this might take some more time this time
+// because it's doing a lot more work behind the scenes,
+// but let's just wait for it.
+// All right.
+
+// And so now we even get this nice output
+// with the sizes of everything.
+// And so let's now take a look at our dist folder,
+// and you see immediately
+// that this HTML looks different, right?
+// It is compressed now.
+
+///===
+// Now, just to finish this lecture,
+// I also wanted to mention
+// that we can also install packages globally.
+// And so that would work like this.
+// So NPM install Parcel, and then G which stands for global.
+// And this is actually the way
+// that we installed the live server package before.
+// And so, because of that,
+// we were then simply able to use live server
+// in every directory on our computer.
+// So basically the big difference
+// between globally and locally installed packages
+// and especially these tools like Parcel or live server,
+// is that we can use the global tools
+// directly in the command line
+// without the intermediate step of an NPM script.
+
+//  npm i parcel -g
+
+// However, most of these tools actually advise developers
+// to always install the tools locally
+// so that they can always stay on the latest version.
+// And so usually I follow that approach as well.
+// And so I'm not going to install Parcel globally like this.
+// Okay.
+
+// And that's the fundamentals of bundling with Parcel
+// and of using build tools with NPM.
+// So I introduced a lot of different concepts here.
+// So to make sure to review this,
+// especially this part about the NPM scripts,
+// maybe that might be confusing
+// and also take a look at the output files
+// that Parcel gives us.
+// So just take some time to review
+// all that we did in this video.
+// And if after that, this is all still very confusing to you,
+// then don't worry.
+// I'm sure that it will make total sense
+// once we actually use this in our next big project.
