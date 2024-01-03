@@ -870,482 +870,506 @@
 // Bundling With Parcel and NPM Scripts
 /////////////////////////////////////////////////////////////////
 
-// So the module bundler
-// that we're gonna use in this course is called Parcel.
-// And it's super fast and easy to use,
-// and, even more importantly,
-// it works out of the box without any configuration.
+// // So the module bundler
+// // that we're gonna use in this course is called Parcel.
+// // And it's super fast and easy to use,
+// // and, even more importantly,
+// // it works out of the box without any configuration.
 
-// Now you might've heard of Webpack as well
-// which is probably the most popular bundler
-// and especially in react world.
-// However, it's way too complex to use in a course like this.
+// // Now you might've heard of Webpack as well
+// // which is probably the most popular bundler
+// // and especially in react world.
+// // However, it's way too complex to use in a course like this.
 
-// And so let's now learn how to use Parcel.
-// So Parcel is basically just another build tool
-// which is also on NPM.
-// And so we will use NPM to install it.
-// So NPM install Parcel
-// but this is now a different dependency.
-// And so here we have to write
-// dash, dash, safe, dev like this.
-// Okay?
+// // And so let's now learn how to use Parcel.
+// // So Parcel is basically just another build tool
+// // which is also on NPM.
+// // And so we will use NPM to install it.
+// // So NPM install Parcel
+// // but this is now a different dependency.
+// // And so here we have to write
+// // dash, dash, safe, dev like this.
+// // Okay?
 
-// // npm install parcel --save-dev
+// // // npm install parcel --save-dev
 
-// Then hit enter, and simply watch it install.
-// So a devDependency is basically like a tool
-// that we need to build our application.
-// But it's not a dependency
-// that we actually include in our code.
-// All right.
+// // Then hit enter, and simply watch it install.
+// // So a devDependency is basically like a tool
+// // that we need to build our application.
+// // But it's not a dependency
+// // that we actually include in our code.
+// // All right.
 
-// So it's simply a tool.
-// And so that's why it's called a devDependency
-// because we can use it to develop our project.
-// And so therefore it appears here in a new field,
-// in our package.json file.
-// So again, these libraries,
-// that we actually include in our code,
-// are the regular dependencies
-// and Parcel is a devDependency now, right?
+// // So it's simply a tool.
+// // And so that's why it's called a devDependency
+// // because we can use it to develop our project.
+// // And so therefore it appears here in a new field,
+// // in our package.json file.
+// // So again, these libraries,
+// // that we actually include in our code,
+// // are the regular dependencies
+// // and Parcel is a devDependency now, right?
 
-// So let's clear the console here and actually use Parcel.
-// So we do it here in the terminal
-// because Parcel is basically
-// just another command line interface.
+// // So let's clear the console here and actually use Parcel.
+// // So we do it here in the terminal
+// // because Parcel is basically
+// // just another command line interface.
 
-// However, we cannot simply run Parcel like this.
-// So this is not going to work
-// because the command is not found.
-// And the reason for that
-// is simply that this doesn't work
-// with locally installed packages.
+// // However, we cannot simply run Parcel like this.
+// // So this is not going to work
+// // because the command is not found.
+// // And the reason for that
+// // is simply that this doesn't work
+// // with locally installed packages.
 
-// And Parcel was indeed installed locally.
-// So basically only on this project
-// and that's why it showed up in the package.json file
-// of this exact project.
-// So there are also global installations
-// but more about that by the end of this video.
+// // And Parcel was indeed installed locally.
+// // So basically only on this project
+// // and that's why it showed up in the package.json file
+// // of this exact project.
+// // So there are also global installations
+// // but more about that by the end of this video.
 
-// Now, in order to still be able to use Parcel
-// here in the console, we have two options.
+// // Now, in order to still be able to use Parcel
+// // here in the console, we have two options.
 
-// So we can use something called NPX
+// // So we can use something called NPX
 
-// or we can use NPM scripts.
+// // or we can use NPM scripts.
 
-//===== 1 NPX
+// //===== 1 NPX
 
-// So let's start with NPX,
-// which is basically an application built into a NPM.
-// So the details don't matter.
-// But what does matter is that we can simply use NPX
-// to now run the same command as we did before,
-// but this time it is going to work.
+// // So let's start with NPX,
+// // which is basically an application built into a NPM.
+// // So the details don't matter.
+// // But what does matter is that we can simply use NPX
+// // to now run the same command as we did before,
+// // but this time it is going to work.
 
-// npx parcel index.html
+// // npx parcel index.html
 
-// and the option that we pass into Parcel
-// basically is this entry point.
-// So the entry point is index.html
-// because that is where we include our script.js.
-// So basically the file that we want to bundle up.
+// // and the option that we pass into Parcel
+// // basically is this entry point.
+// // So the entry point is index.html
+// // because that is where we include our script.js.
+// // So basically the file that we want to bundle up.
 
-// And so basically in this example, the goal of using Parcel
-// is to bundle these three modules together.
-// So script.js together with shoppingCart.js
-// and together with this cloneDeep.
+// // And so basically in this example, the goal of using Parcel
+// // is to bundle these three modules together.
+// // So script.js together with shoppingCart.js
+// // and together with this cloneDeep.
 
-import add, { cart } from './shoppingCart.js';
-add('pizza', 2);
-add('bread', 5);
-add('apples', 4);
+// import add, { cart } from './shoppingCart.js';
+// add('pizza', 2);
+// add('bread', 5);
+// add('apples', 4);
 
-console.log(cart);
+// console.log(cart);
 
-// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
-import cloneDeep from 'lodash-es';
-
-const state = {
-  cart: [
-    { product: 'bread', quantity: 5 },
-    { product: 'pizza', quantity: 5 },
-  ],
-  user: { loggedIn: true },
-};
-
-const stateClone = Object.assign({}, state);
-console.log(stateClone);
-
-const stateDeepClone = cloneDeep(state);
-
-state.user.loggedIn = false;
-console.log(stateClone);
-
-console.log(stateDeepClone);
-
-// npx parcel index.html
-
-// So a Parcel actually then also starts
-// a new development server on this URL.
-// So let's click that.
-
-// However, in Parcel, we can activate something even better,
-// which is called hot module replacement.
-if (module.hot) {
-  module.hot.accept();
-}
-
-// Now this code here is code that only Parcel understands.
-// And so of course it will not make it into our final bundle
-// because the browser is not going to understand any of it.
-// But anyway, what hot module reloading means
-// is that whenever we change one of the modules,
-// it will then, of course, trigger a rebuild, like this,
-// but that new modified bundle will then automatically,
-// like magic, get injected into the browser
-// without triggering a whole page reload.
-
-// So again, whenever we change something here,
-// this will then not reload this part of the page.
-// And so that's going to be amazing
-// for maintaining state on our page
-// whenever we are testing out something.
-// So this used to be something quite annoying in the past.
-// For example, in our Bankist the application,
-// where whenever we reloaded the page,
-// we needed to log in again into the application.
-// Remember that?
-// But with Parcel and hot module replacement,
-// that's not going to happen,
-// because the page will not reload.
-
-// So if I save this now,
-// then probably it's going to look the same.
-// But again, if we had some state here on the page,
-// then that would be maintained.
-
-// Okay, next up, let's change something here.
-// So as I said, when we first included this cloneDeep here,
-// from lodash, this is quite cumbersome doing it like this.
-// And so that's why in all module bundlers,
-// there's no need for specifying
-// the entire path to any module.
-
-// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
-
-// So instead we can simply do this.
-// So keeping this here just for reference,
-// and then all we need to say
-// is that we want to include the lodash library.
-// And so Parcel will then automatically
-// find the path to this module,
-
+// // import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 // import cloneDeep from 'lodash-es';
 
-// and will simply import it like this
-// without us having to manually tie up
-// the entire path to there.
+// const state = {
+//   cart: [
+//     { product: 'bread', quantity: 5 },
+//     { product: 'pizza', quantity: 5 },
+//   ],
+//   user: { loggedIn: true },
+// };
 
-// And so that's a lot more useful than what we had before.
-// And in fact, this works with all kinds of assets.
-// So even with HTML or CSS or SAS files,
-// or even images, and of course also all kinds of modules.
-// So not only ESX modules,
-// but this is also going to work with CommonJS modules.
+// const stateClone = Object.assign({}, state);
+// console.log(stateClone);
 
-// So let me actually show that to you.
-// So instead of importing a DES version of lodash,
-// we can simply import lodash like this.
-// So just a regular version of lodash
-// and Parcel is even smart enough
-// to then automatically install this package here.
-// Okay.
+// const stateDeepClone = cloneDeep(state);
 
-// import cloneDeep from 'lodash';
+// state.user.loggedIn = false;
+// console.log(stateClone);
 
-// So Parcel can indeed work
-// with all the CommonJS modules as well.
-// And so this way we can then simply use
-// all the modules that are available on NPM
-// and which still use this older module format.
-// So let's leave it like this, save it again.
+// console.log(stateDeepClone);
 
-// And maybe you have been noticing that this cart right here
-// keeps growing and growing and growing.
-// So if we take a look at this,
-// you see that we are adding these three products
-// over and over again.
-// And so the reason for that is hot module replacement.
-// So the state is maintained whenever we reload the page here.
-// And so that's exactly what we can now observe here.
-// Okay.
+// // npx parcel index.html
 
-// So if we save it again, then we will have 15
-// because we are simply adding new objects into this object
-// that keeps persisting over page reloads, basically.
-// And so this works with all state,
-// and again, it's going to be really, really helpful.
-// Okay.
+// // So a Parcel actually then also starts
+// // a new development server on this URL.
+// // So let's click that.
 
-// So this is how Parcel works and let me know, finish it here
-// because remember the way we executed Parcel first
-// was by saying a NPX Parcel and then index.html.
+// // However, in Parcel, we can activate something even better,
+// // which is called hot module replacement.
+// if (module.hot) {
+//   module.hot.accept();
+// }
 
-//===== 2 NPM
-// However, I mentioned that there is a second way,
-// which is to use NPM script.
-// And so that's the way we actually use it in practice.
-// So NPM scripts are basically another way
-// of running a locally installed packages in the command line.
-// They also allow us to basically automate repetitive tasks.
-// And so therefore we then don't have to write NPX Parcel
-// and all of that, every time that we want to use it.
+// // Now this code here is code that only Parcel understands.
+// // And so of course it will not make it into our final bundle
+// // because the browser is not going to understand any of it.
+// // But anyway, what hot module reloading means
+// // is that whenever we change one of the modules,
+// // it will then, of course, trigger a rebuild, like this,
+// // but that new modified bundle will then automatically,
+// // like magic, get injected into the browser
+// // without triggering a whole page reload.
 
-// in package.json
-// "scripts": {
-//   "test": "echo \"Error: no test specified\" && exit 1"
-// },
+// // So again, whenever we change something here,
+// // this will then not reload this part of the page.
+// // And so that's going to be amazing
+// // for maintaining state on our page
+// // whenever we are testing out something.
+// // So this used to be something quite annoying in the past.
+// // For example, in our Bankist the application,
+// // where whenever we reloaded the page,
+// // we needed to log in again into the application.
+// // Remember that?
+// // But with Parcel and hot module replacement,
+// // that's not going to happen,
+// // because the page will not reload.
 
-// So we can simply create a script here,
-// and let me delete this one here,
-// let me just delete all of it and create a new one.
-// So we need to double quote and then the name of the script
-// and the default is start here,
-// and then here comes the script itself.
-// And so the script is going to
-// be simply Parcel index.html.
+// // So if I save this now,
+// // then probably it's going to look the same.
+// // But again, if we had some state here on the page,
+// // then that would be maintained.
 
-// "scripts": {
-//   "start": "parcel index.html"
-// },
+// // Okay, next up, let's change something here.
+// // So as I said, when we first included this cloneDeep here,
+// // from lodash, this is quite cumbersome doing it like this.
+// // And so that's why in all module bundlers,
+// // there's no need for specifying
+// // the entire path to any module.
 
-// So again, we can't write this command
-// directly in the command line,
-// but we can write it in the NPM script.
-// And so let's now go back to our console
-// and try it out and actually run this command.
-// NPM run and then start.
-// And so start is the name of the NPM script
-// that we defined here.
-// So let's try that.
-// And here we go.
+// // import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 
-// npm run start
+// // So instead we can simply do this.
+// // So keeping this here just for reference,
+// // and then all we need to say
+// // is that we want to include the lodash library.
+// // And so Parcel will then automatically
+// // find the path to this module,
 
-// So it's doing the same thing as before
-// but now we have the simple command
-// that we can execute whenever we want to start Parcel
-// and whenever we want to start developing, basically.
-// And so again, that is mainly how we do it in development.
-// Okay.
+// // import cloneDeep from 'lodash-es';
 
-// And speaking of development,
-// whenever we are done developing our project,
-// it is time to build the final bundle.
-// So the bundle that is compressed
-// and has dead code elimination and all of that.
-// And so for that, we need another Parcel command.
-// And so let's add that as another script here.
-// So we need to come up
-// and then this one will be called build.
-// And so Parcel, build, and then again, index.html.
+// // and will simply import it like this
+// // without us having to manually tie up
+// // the entire path to there.
 
-// "scripts": {
-//   "start": "parcel index.html",
-//   "build": "parcel build index.html"
-// },
+// // And so that's a lot more useful than what we had before.
+// // And in fact, this works with all kinds of assets.
+// // So even with HTML or CSS or SAS files,
+// // or even images, and of course also all kinds of modules.
+// // So not only ESX modules,
+// // but this is also going to work with CommonJS modules.
 
-// So let's stop this one here actually,
-// and now let's run NPM run build.
+// // So let me actually show that to you.
+// // So instead of importing a DES version of lodash,
+// // we can simply import lodash like this.
+// // So just a regular version of lodash
+// // and Parcel is even smart enough
+// // to then automatically install this package here.
+// // Okay.
 
-// npm run build
+// // import cloneDeep from 'lodash';
 
-// So this might take some more time this time
-// because it's doing a lot more work behind the scenes,
-// but let's just wait for it.
-// All right.
+// // So Parcel can indeed work
+// // with all the CommonJS modules as well.
+// // And so this way we can then simply use
+// // all the modules that are available on NPM
+// // and which still use this older module format.
+// // So let's leave it like this, save it again.
 
-// And so now we even get this nice output
-// with the sizes of everything.
-// And so let's now take a look at our dist folder,
-// and you see immediately
-// that this HTML looks different, right?
-// It is compressed now.
+// // And maybe you have been noticing that this cart right here
+// // keeps growing and growing and growing.
+// // So if we take a look at this,
+// // you see that we are adding these three products
+// // over and over again.
+// // And so the reason for that is hot module replacement.
+// // So the state is maintained whenever we reload the page here.
+// // And so that's exactly what we can now observe here.
+// // Okay.
 
-///===
-// Now, just to finish this lecture,
-// I also wanted to mention
-// that we can also install packages globally.
-// And so that would work like this.
-// So NPM install Parcel, and then G which stands for global.
-// And this is actually the way
-// that we installed the live server package before.
-// And so, because of that,
-// we were then simply able to use live server
-// in every directory on our computer.
-// So basically the big difference
-// between globally and locally installed packages
-// and especially these tools like Parcel or live server,
-// is that we can use the global tools
-// directly in the command line
-// without the intermediate step of an NPM script.
+// // So if we save it again, then we will have 15
+// // because we are simply adding new objects into this object
+// // that keeps persisting over page reloads, basically.
+// // And so this works with all state,
+// // and again, it's going to be really, really helpful.
+// // Okay.
 
-//  npm i parcel -g
+// // So this is how Parcel works and let me know, finish it here
+// // because remember the way we executed Parcel first
+// // was by saying a NPX Parcel and then index.html.
 
-// However, most of these tools actually advise developers
-// to always install the tools locally
-// so that they can always stay on the latest version.
-// And so usually I follow that approach as well.
-// And so I'm not going to install Parcel globally like this.
-// Okay.
+// //===== 2 NPM
+// // However, I mentioned that there is a second way,
+// // which is to use NPM script.
+// // And so that's the way we actually use it in practice.
+// // So NPM scripts are basically another way
+// // of running a locally installed packages in the command line.
+// // They also allow us to basically automate repetitive tasks.
+// // And so therefore we then don't have to write NPX Parcel
+// // and all of that, every time that we want to use it.
 
-// And that's the fundamentals of bundling with Parcel
-// and of using build tools with NPM.
-// So I introduced a lot of different concepts here.
-// So to make sure to review this,
-// especially this part about the NPM scripts,
-// maybe that might be confusing
-// and also take a look at the output files
-// that Parcel gives us.
-// So just take some time to review
-// all that we did in this video.
-// And if after that, this is all still very confusing to you,
-// then don't worry.
-// I'm sure that it will make total sense
-// once we actually use this in our next big project.
+// // in package.json
+// // "scripts": {
+// //   "test": "echo \"Error: no test specified\" && exit 1"
+// // },
 
-//////////////////////////////////////////////////////////////////
-// Configuring Babel and Polyfilling
-//////////////////////////////////////////////////////////////////
+// // So we can simply create a script here,
+// // and let me delete this one here,
+// // let me just delete all of it and create a new one.
+// // So we need to double quote and then the name of the script
+// // and the default is start here,
+// // and then here comes the script itself.
+// // And so the script is going to
+// // be simply Parcel index.html.
 
-// Now that we activated bundling
-// it's time to configure Babel to transpile
-// or super modern code back to ES5 code.
-// And this is still important right now even many years
-// after the new ES6 standard has been introduced.
+// // "scripts": {
+// //   "start": "parcel index.html"
+// // },
 
-// And the reason for that is simply
-// that there are still many people out there
-// who are stuck on like a windows XP
-// or windows seven computer
-// and two cannot upgrade their old internet explorers
-// but we want our applications to work for everyone.
-// And so we need to keep everyone in mind.
-// Now, the good news is
-// that parcel actually automatically uses Babel
-// to transpile or code.
-// And we can configure Babel a lot if we want to
-// for example defining exactly
-// what browsers should be supported
-// but as always, that's a ton of work.
-// And so we don't want that.
-// And instead parcel makes
-// some very good default decisions for us.
-// And so we will simply mainly just go with these defaults.
+// // So again, we can't write this command
+// // directly in the command line,
+// // but we can write it in the NPM script.
+// // And so let's now go back to our console
+// // and try it out and actually run this command.
+// // NPM run and then start.
+// // And so start is the name of the NPM script
+// // that we defined here.
+// // So let's try that.
+// // And here we go.
 
-// https://babeljs.io/docs/plugins
+// // npm run start
 
-class Person {
-  #greeting = 'Hey';
+// // So it's doing the same thing as before
+// // but now we have the simple command
+// // that we can execute whenever we want to start Parcel
+// // and whenever we want to start developing, basically.
+// // And so again, that is mainly how we do it in development.
+// // Okay.
 
-  constructor(name) {
-    this.name = name;
-    console.log(`${this.#greeting}, ${this.name}`);
-  }
-}
+// // And speaking of development,
+// // whenever we are done developing our project,
+// // it is time to build the final bundle.
+// // So the bundle that is compressed
+// // and has dead code elimination and all of that.
+// // And so for that, we need another Parcel command.
+// // And so let's add that as another script here.
+// // So we need to come up
+// // and then this one will be called build.
+// // And so Parcel, build, and then again, index.html.
 
-const jonas = new Person('Jonas');
+// // "scripts": {
+// //   "start": "parcel index.html",
+// //   "build": "parcel build index.html"
+// // },
 
-console.log('Jonas' ?? null);
+// // So let's stop this one here actually,
+// // and now let's run NPM run build.
 
-console.log(cart.find(el => el.quantity >= 2));
-Promise.resolve('TEST').then(x => console.log(x));
+// // npm run build
 
-// And so Babel can simply write function instead of data.
-// And the same goes with const.
-// So it's very easy to simply convert that to VAR
-// but the same is not true for real new features
-// that were added to the language
-// like find and promise.
-// So these new additions to the language
-// so these new features, they can simply not be transpiled.
-// It's simply not possible.
+// // So this might take some more time this time
+// // because it's doing a lot more work behind the scenes,
+// // but let's just wait for it.
+// // All right.
 
-// Only syntax is easy to convert, so easy to compile.
-// However, all hope is not lost.
-// So for these added features
-// again, such as promises or all the array methods
-// like finds and really a bunch of other stuff,
-// we can polyfill them.
+// // And so now we even get this nice output
+// // with the sizes of everything.
+// // And so let's now take a look at our dist folder,
+// // and you see immediately
+// // that this HTML looks different, right?
+// // It is compressed now.
 
-// And so that's why since the beginning
-// I've always been saying transpiling and polyfilling.
-// So these new features, we have to polyfill them.
-// Now Babel used to do polyfilling
-// out of the box some time ago
-// but recently they started to simply
-// recommending another library.
-// And so we now have to manually import data as well.
+// ///===
+// // Now, just to finish this lecture,
+// // I also wanted to mention
+// // that we can also install packages globally.
+// // And so that would work like this.
+// // So NPM install Parcel, and then G which stands for global.
+// // And this is actually the way
+// // that we installed the live server package before.
+// // And so, because of that,
+// // we were then simply able to use live server
+// // in every directory on our computer.
+// // So basically the big difference
+// // between globally and locally installed packages
+// // and especially these tools like Parcel or live server,
+// // is that we can use the global tools
+// // directly in the command line
+// // without the intermediate step of an NPM script.
 
-import 'core-js/stable';
+// //  npm i parcel -g
 
-// So import Core-js so that's the name of the library.
-// And then we usually only want to import a part
-// of that library and that's called Stable.
-// And so we can write this.
-// Okay.
+// // However, most of these tools actually advise developers
+// // to always install the tools locally
+// // so that they can always stay on the latest version.
+// // And so usually I follow that approach as well.
+// // And so I'm not going to install Parcel globally like this.
+// // Okay.
 
-// Now usually we have to install
-// all of the packages first
-// but fortunately parcel is smart
-// enough to install this automatically.
+// // And that's the fundamentals of bundling with Parcel
+// // and of using build tools with NPM.
+// // So I introduced a lot of different concepts here.
+// // So to make sure to review this,
+// // especially this part about the NPM scripts,
+// // maybe that might be confusing
+// // and also take a look at the output files
+// // that Parcel gives us.
+// // So just take some time to review
+// // all that we did in this video.
+// // And if after that, this is all still very confusing to you,
+// // then don't worry.
+// // I'm sure that it will make total sense
+// // once we actually use this in our next big project.
 
-// Well at least that is how it should be.
-// So maybe that doesn't work after all
-// so let's manually install it, but that's weird.
-// So core-js.
+// //////////////////////////////////////////////////////////////////
+// // Configuring Babel and Polyfilling
+// //////////////////////////////////////////////////////////////////
 
-// ==== install first -> npm i core-js
+// // Now that we activated bundling
+// // it's time to configure Babel to transpile
+// // or super modern code back to ES5 code.
+// // And this is still important right now even many years
+// // after the new ES6 standard has been introduced.
 
-// So let's see.
-// And so here we go.
+// // And the reason for that is simply
+// // that there are still many people out there
+// // who are stuck on like a windows XP
+// // or windows seven computer
+// // and two cannot upgrade their old internet explorers
+// // but we want our applications to work for everyone.
+// // And so we need to keep everyone in mind.
+// // Now, the good news is
+// // that parcel actually automatically uses Babel
+// // to transpile or code.
+// // And we can configure Babel a lot if we want to
+// // for example defining exactly
+// // what browsers should be supported
+// // but as always, that's a ton of work.
+// // And so we don't want that.
+// // And instead parcel makes
+// // some very good default decisions for us.
+// // And so we will simply mainly just go with these defaults.
 
-// So maybe you're starting to see
-// that D things really change all the time.
-// And so, hi, I'm even confused myself sometimes
-// on why certain things used to work
-// and now they work differently.
+// // https://babeljs.io/docs/plugins
 
-// But the good thing is
-// that you don't really have to understand all this.
-// So this is really more like a recipe
-// that you just need to follow.
-// And then with time it will all become like a routine
-// and it will become simple.
+// class Person {
+//   #greeting = 'Hey';
 
-// However, as you just saw before
-// the polyfilling is going to polyfill everything
-// even if we don't need it.
+//   constructor(name) {
+//     this.name = name;
+//     console.log(`${this.#greeting}, ${this.name}`);
+//   }
+// }
 
-// Finally, just to finish there is still one feature
-// that is not polyfilled by this one here.
-// And so we always need to install
-// just one more package
-// which is called NPM install regenerator-runtime.
+// const jonas = new Person('Jonas');
 
-//=== install  -> npm install regenerator-runtime
+// console.log('Jonas' ?? null);
 
-// Polifiling async functions
+// console.log(cart.find(el => el.quantity >= 2));
+// Promise.resolve('TEST').then(x => console.log(x));
 
-// So we need import, so regenerator-runtime/runtime like this.
-// Alright? So this here is for polyfilling async functions.
-import 'regenerator-runtime/runtime';
+// // And so Babel can simply write function instead of data.
+// // And the same goes with const.
+// // So it's very easy to simply convert that to VAR
+// // but the same is not true for real new features
+// // that were added to the language
+// // like find and promise.
+// // So these new additions to the language
+// // so these new features, they can simply not be transpiled.
+// // It's simply not possible.
+
+// // Only syntax is easy to convert, so easy to compile.
+// // However, all hope is not lost.
+// // So for these added features
+// // again, such as promises or all the array methods
+// // like finds and really a bunch of other stuff,
+// // we can polyfill them.
+
+// // And so that's why since the beginning
+// // I've always been saying transpiling and polyfilling.
+// // So these new features, we have to polyfill them.
+// // Now Babel used to do polyfilling
+// // out of the box some time ago
+// // but recently they started to simply
+// // recommending another library.
+// // And so we now have to manually import data as well.
+
+// import 'core-js/stable';
+
+// // So import Core-js so that's the name of the library.
+// // And then we usually only want to import a part
+// // of that library and that's called Stable.
+// // And so we can write this.
+// // Okay.
+
+// // Now usually we have to install
+// // all of the packages first
+// // but fortunately parcel is smart
+// // enough to install this automatically.
+
+// // Well at least that is how it should be.
+// // So maybe that doesn't work after all
+// // so let's manually install it, but that's weird.
+// // So core-js.
+
+// // ==== install first -> npm i core-js
+
+// // So let's see.
+// // And so here we go.
+
+// // So maybe you're starting to see
+// // that D things really change all the time.
+// // And so, hi, I'm even confused myself sometimes
+// // on why certain things used to work
+// // and now they work differently.
+
+// // But the good thing is
+// // that you don't really have to understand all this.
+// // So this is really more like a recipe
+// // that you just need to follow.
+// // And then with time it will all become like a routine
+// // and it will become simple.
+
+// // However, as you just saw before
+// // the polyfilling is going to polyfill everything
+// // even if we don't need it.
+
+// // Finally, just to finish there is still one feature
+// // that is not polyfilled by this one here.
+// // And so we always need to install
+// // just one more package
+// // which is called NPM install regenerator-runtime.
+
+// //=== install  -> npm install regenerator-runtime
+
+// // Polifiling async functions
+
+// // So we need import, so regenerator-runtime/runtime like this.
+// // Alright? So this here is for polyfilling async functions.
+// import 'regenerator-runtime/runtime';
 
 ///////////////////////////////////////////////////////////
 // Review: Writing Clean and Modern JavaScript
 ///////////////////////////////////////////////////////////
 
 // SEE PDF LECTURE AND VIDEO
+
+////////////////////////////////////////////////////////////////
+// Let's Fix Some Bad Code: Part 1
+////////////////////////////////////////////////////////////////
+// All right.
+// So let's now take a look at some bad code
+// that doesn't follow any of the principles or guidelines
+// that I showed you in the previous lecture,
+// and actually start fixing it in this video.
+// And the code that we're gonna fix
+// is also here in your starter files
+// and it is called clean.js.
+
+// And then let's also come to our index.html file.
+// And then here let's copy this
+// because now we no longer want to include script.js.
+// So I will comment it out,
+// but instead we want clean.js that we will work on now.
+// So give it a save.
+// And now we will also run this code
+// again with live server and no longer with Parcel
+// because now there is nothing to bundle,
+// all we want to do is to take a look at our code
+// in a very simple way.
