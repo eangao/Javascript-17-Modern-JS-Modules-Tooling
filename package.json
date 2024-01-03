@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/eangao/Javascript-17-Modern-JS-Modules-Tooling#readme",
   "dependencies": {
+    "core-js": "^3.35.0",
     "leaflet": "^1.9.4",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
     "parcel": "^2.10.3"

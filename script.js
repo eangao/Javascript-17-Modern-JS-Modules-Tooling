@@ -1216,3 +1216,130 @@ if (module.hot) {
 // then don't worry.
 // I'm sure that it will make total sense
 // once we actually use this in our next big project.
+
+//////////////////////////////////////////////////////////////////
+// Configuring Babel and Polyfilling
+//////////////////////////////////////////////////////////////////
+
+// Now that we activated bundling
+// it's time to configure Babel to transpile
+// or super modern code back to ES5 code.
+// And this is still important right now even many years
+// after the new ES6 standard has been introduced.
+
+// And the reason for that is simply
+// that there are still many people out there
+// who are stuck on like a windows XP
+// or windows seven computer
+// and two cannot upgrade their old internet explorers
+// but we want our applications to work for everyone.
+// And so we need to keep everyone in mind.
+// Now, the good news is
+// that parcel actually automatically uses Babel
+// to transpile or code.
+// And we can configure Babel a lot if we want to
+// for example defining exactly
+// what browsers should be supported
+// but as always, that's a ton of work.
+// And so we don't want that.
+// And instead parcel makes
+// some very good default decisions for us.
+// And so we will simply mainly just go with these defaults.
+
+// https://babeljs.io/docs/plugins
+
+class Person {
+  #greeting = 'Hey';
+
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.#greeting}, ${this.name}`);
+  }
+}
+
+const jonas = new Person('Jonas');
+
+console.log('Jonas' ?? null);
+
+console.log(cart.find(el => el.quantity >= 2));
+Promise.resolve('TEST').then(x => console.log(x));
+
+// And so Babel can simply write function instead of data.
+// And the same goes with const.
+// So it's very easy to simply convert that to VAR
+// but the same is not true for real new features
+// that were added to the language
+// like find and promise.
+// So these new additions to the language
+// so these new features, they can simply not be transpiled.
+// It's simply not possible.
+
+// Only syntax is easy to convert, so easy to compile.
+// However, all hope is not lost.
+// So for these added features
+// again, such as promises or all the array methods
+// like finds and really a bunch of other stuff,
+// we can polyfill them.
+
+// And so that's why since the beginning
+// I've always been saying transpiling and polyfilling.
+// So these new features, we have to polyfill them.
+// Now Babel used to do polyfilling
+// out of the box some time ago
+// but recently they started to simply
+// recommending another library.
+// And so we now have to manually import data as well.
+
+import 'core-js/stable';
+
+// So import Core-js so that's the name of the library.
+// And then we usually only want to import a part
+// of that library and that's called Stable.
+// And so we can write this.
+// Okay.
+
+// Now usually we have to install
+// all of the packages first
+// but fortunately parcel is smart
+// enough to install this automatically.
+
+// Well at least that is how it should be.
+// So maybe that doesn't work after all
+// so let's manually install it, but that's weird.
+// So core-js.
+
+// ==== install first -> npm i core-js
+
+// So let's see.
+// And so here we go.
+
+// So maybe you're starting to see
+// that D things really change all the time.
+// And so, hi, I'm even confused myself sometimes
+// on why certain things used to work
+// and now they work differently.
+
+// But the good thing is
+// that you don't really have to understand all this.
+// So this is really more like a recipe
+// that you just need to follow.
+// And then with time it will all become like a routine
+// and it will become simple.
+
+// However, as you just saw before
+// the polyfilling is going to polyfill everything
+// even if we don't need it.
+
+// Finally, just to finish there is still one feature
+// that is not polyfilled by this one here.
+// And so we always need to install
+// just one more package
+// which is called NPM install regenerator-runtime.
+
+//=== install  -> npm install regenerator-runtime
+
+// Polifiling async functions
+
+// So we need import, so regenerator-runtime/runtime like this.
+// Alright? So this here is for polyfilling async functions.
+import 'regenerator-runtime/runtime';
