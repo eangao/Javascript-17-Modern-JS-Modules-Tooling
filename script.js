@@ -492,122 +492,376 @@
 // CommonJS Modules
 ////////////////////////////////////////////////////////////////////
 
-// Besides native ES Modules,
-// and the module pattern,
-// there are also other module systems,
-// that have been used
-// by JavaScript in the past.
-// But again, they were not native JavaScript.
-// so they relied on some external implementations.
-// And two examples are:
+// // Besides native ES Modules,
+// // and the module pattern,
+// // there are also other module systems,
+// // that have been used
+// // by JavaScript in the past.
+// // But again, they were not native JavaScript.
+// // so they relied on some external implementations.
+// // And two examples are:
 
-// AMD Modules,
+// // AMD Modules,
 
-// and CommonJS modules.
+// // and CommonJS modules.
 
-// And in fact, CommonJS modules,
-// are worth taking a look at.
-// And so let's do that now.
-// Now CommonJS modules are important for us,
-// because they have been used in Node.js,
-// for almost all of its existence.
-// So only very recently,
-// ES Modules have actually been implemented,
-// in Node.js.
-// And remember,
-// Node.js is a way
-// of running JavaScript on a web server,
-// outside of a browser.
-// Now the big consequence of this,
-// is that almost all the modules,
-// in the npm repository,
-// that we talked about
-// in the beginning of this section, remember?
-// So all these modules
-// that we can use in our own code,
-// still use the CommonJS module system.
-// And the reason for that,
-// is that npm was originally
-// only intended for node.
-// Which as they said, uses commonJS.
-// Only later npm became the standard repository,
-// for the whole JavaScript world.
-// And so now we are basically stuck,
-// with CommonJS.
-// And so therefore,
-// you will see probably,
-// a lot of CommonJS still around.
-// And so let's take a quick second
-// to see what it looks like.
+// // And in fact, CommonJS modules,
+// // are worth taking a look at.
+// // And so let's do that now.
+// // Now CommonJS modules are important for us,
+// // because they have been used in Node.js,
+// // for almost all of its existence.
+// // So only very recently,
+// // ES Modules have actually been implemented,
+// // in Node.js.
+// // And remember,
+// // Node.js is a way
+// // of running JavaScript on a web server,
+// // outside of a browser.
+// // Now the big consequence of this,
+// // is that almost all the modules,
+// // in the npm repository,
+// // that we talked about
+// // in the beginning of this section, remember?
+// // So all these modules
+// // that we can use in our own code,
+// // still use the CommonJS module system.
+// // And the reason for that,
+// // is that npm was originally
+// // only intended for node.
+// // Which as they said, uses commonJS.
+// // Only later npm became the standard repository,
+// // for the whole JavaScript world.
+// // And so now we are basically stuck,
+// // with CommonJS.
+// // And so therefore,
+// // you will see probably,
+// // a lot of CommonJS still around.
+// // And so let's take a quick second
+// // to see what it looks like.
 
-// And so just like ES6 modules,
-// in CommonJS,
-// one file, is one module.
-// And we export something from a module,
-// using export.dot,
-// and then the name of the export.
-// So let's say,
-// export.dot (indistinct),
-// and then,
-// whatever we want to export there.
+// // And so just like ES6 modules,
+// // in CommonJS,
+// // one file, is one module.
+// // And we export something from a module,
+// // using export.dot,
+// // and then the name of the export.
+// // So let's say,
+// // export.dot (indistinct),
+// // and then,
+// // whatever we want to export there.
 
-// whatever we want to export there.
-// Now of course,
-// this is not going to work in the browser,
-// but it would work in Node.js.
+// // whatever we want to export there.
+// // Now of course,
+// // this is not going to work in the browser,
+// // but it would work in Node.js.
 
-// So this export keyword here,
-// is basically an object
-// that again, is of course not defined here
-// in our code,
-// and also not in the browser.
-// But in Node.js,
-// it is an important object,
-// that is used.
-// EXPORT
-export const addToCart = function (product, quantity) {
-  cart.push({ product, quantity });
-  console.log(`${quantity} ${product} added to cart`);
+// // So this export keyword here,
+// // is basically an object
+// // that again, is of course not defined here
+// // in our code,
+// // and also not in the browser.
+// // But in Node.js,
+// // it is an important object,
+// // that is used.
+// // EXPORT
+// export const addToCart = function (product, quantity) {
+//   cart.push({ product, quantity });
+//   console.log(`${quantity} ${product} added to cart`);
+// };
+
+// // iMPORT
+// // and import.
+// // And so this code is not for you to write.
+// // I just want to show this to you.
+// // So if we didn't want it to import this,
+// // would be pretty similar,
+// // to ES Modules actually,
+// // but then from here,
+// // we will call a require function.
+// // So just like this.
+// // So again, require
+// // is of course not defined,
+// // here in our browser environment,
+// // but it is defined in Node.js,
+// // because this is part
+
+// // And that's actually all I had to show you,
+// // even though this is, of course,
+// // just scratching the surface.
+// const { addToCart } = require('./shoppingCart.js');
+
+// // But all I wanted to do here,
+// // is to just let you know,
+// // that there are different module systems,
+// // and that CommonJS,
+// // is particularly important,
+// // in the world of JavaScript.
+
+// // Now in the long run,
+// // ES6 Modules,
+// // will hopefully,
+// // and probably,
+// // replace all of these different module systems.
+// // But it's still gonna be
+// // a long way until you're there.
+// // And so it's good
+// // that at least you know,
+// // what is (indistinct),
+// // when you stumble upon
+// // the syntax in the future,
+// // in your work.
+
+/////////////////////////////////////////////////////////////////////////
+// A Brief Introduction to the Command Line
+/////////////////////////////////////////////////////////////////////////
+
+// Now before we can use a tool like parcel,
+// we first need to learn a little bit about the Command Line.
+// Yeah, you heard that right.
+// All of these build tools that are available
+// on NPM only work in the Command Line.
+// And so now comes that time
+// where you finally have to learn a little bit
+// about the basics at least of the Command Line.
+
+////////////////////////////////////////////////////////////
+// Introduction to NPM
+////////////////////////////////////////////////////////////
+//see video lecture
+
+// So, let's now finally use NPM for the first time.
+// And remember, NPM stands for Node Package Manager,
+// and it's both a software on our computer
+// and a package repository.
+// Now, before we jump straight into NPM, let's start
+// by understanding why we actually need something like NPM.
+// So, why do we actually need a way of managing packages
+// or dependencies in our project?
+
+// Well, back in the day before we had NPM,
+// we used to include external libraries right into our HTML.
+// So, basically using the script tag.
+// And this would then expose a global variable
+// that we could use, and actually that's exactly
+// what we did earlier in our Mapty project.
+
+// So, let's actually use or open that here.
+// So, Mapty and just the index.html file.
+// And so here it is, and you see that indeed,
+// we simply included the leaflet.js file basically using
+// a script tag and did that before or own script
+// so that our own script could then use the global variable
+// that was exposed by this library here, right?
+
+// Remember that?
+// Now, this actually creates a couple of problems,
+// at least in a big project so maybe not
+// in this particular project that is really small,
+// but in a huge project and a huge team,
+// this is just not manageable.
+
+// First, it doesn't make much sense having the HTML loading
+// all of JavaScript, that is just really messy.
+// Also many times we would actually download a library file
+// to our computer directly, for example,
+// a jQuery JavaScript file.
+// But then whenever a new version would come out,
+// we would have to manually go to the site,
+// download the new version,
+// change the file in our file system manually,
+// and then include it here again, maybe with some other name,
+// with some other version number.
+// And that was just a huge pain, believe me.
+
+// And a third reason is that before NPM, there simply wasn't
+// a single repository that contained all the packages
+// that we might need.
+// And so this made it even worse and more difficult
+// to manually download libraries and manage them
+// on our computers.
+
+// So in summary, this all used to be a huge pain
+// and a huge mess.
+// And maybe you even remember this yourself,
+// like the old days of jQuery and dozens of jQuery plugins
+// that you would have to keep updated.
+
+// But anyway, all of this is just to say that we really need
+// a way to manage our dependencies in a better
+// and more modern way.
+
+// And NPM is exactly how we do that.
+// And so, let's start by using the NPM software now.
+// Now right, so actually we will need to this terminal now,
+
+//====
+// Okay, so we installed our leaflet library now,
+// but if we wanted to use it,
+// that wouldn't be easy without a module bundler.
+// And that's because this library actually uses
+// the common JS module system.
+// So for the reasons that I explained to you before,
+// and so therefore we cannot directly import it into our code.
+// We could only do that if later we used a module bundler,
+// but for now we are not doing that.
+// And so, let's just not use leaflet for now.
+// So, this was just to show you how to install it.
+
+// So instead, let me show you how we can install
+// and import one of the most popular JavaScript libraries,
+// which is Lodash.
+// So Lodash, like this and Lodash is essentially
+// a collection of a ton of useful functions for erase,
+// objects, functions, dates, and more.
+// So, it's a lot of like functions that could
+// or should be included in JavaScript, but are not.
+// And so people simply implemented them in Lodash,
+// and so now we can use them.
+// So, down here we have to installation
+// and here you see again, the old way of doing it
+// as I explained it before.
+// So, that would be downloading it
+// and then including it manually.
+// Then here we have the NPM way, but there also should be
+// something else here I'm looking for,
+
+// but here is how we actually install it using NPM.
+// So as always, NPM install and then Lodash.
+// However, I'm not looking for just the normal Lodash version,
+// because once again, that one actually uses common JS.
+// And so we can't use common JS modules without
+// a module bundler.
+// And so I'm looking for a special version
+// and that one is called Lodash-ES.
+
+import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+// Now, why did I actually include cloneDeep
+// and not something else?
+// Well, it's because I actually already mentioned Lodash
+// before when we talked about copying objects.
+// So, remember that it's very hard to copy a nested object.
+
+const state = {
+  cart: [
+    { product: 'bread', quantity: 5 },
+    { product: 'pizza', quantity: 5 },
+  ],
+  user: { loggedIn: true },
 };
 
-// iMPORT
-// and import.
-// And so this code is not for you to write.
-// I just want to show this to you.
-// So if we didn't want it to import this,
-// would be pretty similar,
-// to ES Modules actually,
-// but then from here,
-// we will call a require function.
-// So just like this.
-// So again, require
-// is of course not defined,
-// here in our browser environment,
-// but it is defined in Node.js,
-// because this is part
+// And so, let's see what happens
+// when we copy it using JavaScript.
+// So, state clone, and remember we use object.assign to create
+// a copy of an object.
+// And so we create an empty object and then we basically merge
+// that with the state.
+// So, let's take a look at the stateClone.
+// And so indeed it looks exactly the same as the state, right?
+const stateClone = Object.assign({}, state);
+console.log(stateClone);
 
-// And that's actually all I had to show you,
-// even though this is, of course,
-// just scratching the surface.
-const { addToCart } = require('./shoppingCart.js');
+// However, what happens when we change one of
+// the nested objects in there?
+// state.user.loggedIn = false;
+// console.log(stateClone);
 
-// But all I wanted to do here,
-// is to just let you know,
-// that there are different module systems,
-// and that CommonJS,
-// is particularly important,
-// in the world of JavaScript.
+// So, when we now say state dot user dot logged in
+// and set it to false, then see what happens to the logged in,
+// in the copy, so you see that it is also false.
 
-// Now in the long run,
-// ES6 Modules,
-// will hopefully,
-// and probably,
-// replace all of these different module systems.
-// But it's still gonna be
-// a long way until you're there.
-// And so it's good
-// that at least you know,
-// what is (indistinct),
-// when you stumble upon
-// the syntax in the future,
-// in your work.
+// And so, that's for all the reasons
+// that we already learned before.
+// And so remember that back then I said
+// that using Lodash would probably be a good idea,
+
+// instead of using object dot assign,
+// because if we wanted to manually create a deep copy
+// or a deep clone, well, that would be a lot of work.
+// And so instead we, can simply use this function
+// that Lodash gives us so that
+// some people already implement it for us
+// and which is also battle tested already.
+
+const stateDeepClone = cloneDeep(state);
+
+state.user.loggedIn = false;
+console.log(stateClone);
+
+console.log(stateDeepClone);
+
+// should work.
+// So again, this one changed to false,
+// but this one now is still true, even though we changed it
+// in the original object, okay?
+
+// And so this is a good solution for a deep clone
+// that we just got from NPM.
+// And that's great, right?
+// So, we just used a piece of open source software to solve
+// a problem that we have sometimes in JavaScript.
+// Great, that's just awesome.
+// So again, you're now one step closer to working like
+// a real JavaScript developer,
+// because this is just what everyone does all the time.
+// So, this is the function that does the work,
+// but actually it is this one here,
+// but well, that's not inspected,
+// but of course you can have some fun and take a look at
+// how they implemented this, okay?
+
+////====
+// But I actually want to go back to this package.json file
+// because it is actually very important.
+
+// So, let's say that you want to move your project
+// to another computer, or also share it with another developer
+// or even check it into version control like Git.
+// Now in all of these scenarios, you should never ever include
+// the node modules folder.
+
+// So again, when you copy your project to somewhere else,
+// there is no reason to include this huge node modules folder,
+// because in a real project,
+// it will actually be really, really huge.
+
+// So, I have had a folders here with tens of thousands
+// of files, and so that will just slow you down.
+// And it doesn't make much sense either
+// because all of these files, they are already at NPM.
+
+// And so, you can always get them back from there.
+// But now you might ask, well, if I copy my project without
+// the node modules folder, so without the dependencies,
+// will I have to install all of them, one by one?
+// What if I have 20 or 200 dependencies?
+
+// Well, that's again
+// where this important package.json file comes into play.
+
+// So, let's actually simulate that by deleting this node_modules folder.
+// So, move to trash.
+// And so now of course this does not work anymore,
+
+// but there is fortunately a very easy way to get it back.
+// All we have to do is NPM and then install or I,
+// but just without any package name.
+
+// npm install
+
+// And so then, NPM will reach into your package.json file,
+// look at all the dependencies and install them back.
+// And so, you see that or folder, well, it should be back.
+// And yeah, so here it is just like before.
+
+//==
+// And so with this, you now have a basic,
+// but I think good understanding of how to work
+// with NPM downloading packages and also include them
+// in your code.
+
+// However, importing packages like we did here, for example,
+// by specifying this entire path is not practical at all.
+// And so in the next video,
+// it's time to finally use Parcel to fix this.
