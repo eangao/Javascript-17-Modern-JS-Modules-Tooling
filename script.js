@@ -1373,3 +1373,27 @@
 // because now there is nothing to bundle,
 // all we want to do is to take a look at our code
 // in a very simple way.
+
+/////////////////////////////////////////////////////////
+// Declarative and Functional JavaScript Principles
+/////////////////////////////////////////////////////////
+//SEE PDF LECTURE AND VIDEO
+
+// So, we just reviewed
+// and also implemented some clean
+// and modern JavaScript practices.
+// However, there is currently a major trend
+// and shift to something called declarative code
+// and functional programming in JavaScript.
+
+// And so, let's now take some time to look at what declarative
+// and functional programming actually are.
+
+// So, there are two fundamentally different ways
+// of writing code in programming,
+// which we also call paradigms.
+// And these two paradigms,
+// are imperative code and declarative code.
+// Now, whenever we write imperative code,
+// we basically need to explain to the computer
+// how to do a certain things.
