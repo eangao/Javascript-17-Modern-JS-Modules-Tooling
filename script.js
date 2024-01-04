@@ -1397,3 +1397,24 @@
 // Now, whenever we write imperative code,
 // we basically need to explain to the computer
 // how to do a certain things.
+
+///////////////////////////////////////////////////////////////
+// et's Fix Some Bad Code: Part 2
+///////////////////////////////////////////////////////////////
+
+// Welcome back to continuing to fix the code
+// that we started to work on a bit earlier.
+// And so in this lecture, we're gonna focus on some of the,
+// functional and declarative principles
+// that we learned about in the last video.
+// And we're gonna focus on three big areas
+// of functional JavaScript just as we talked about
+// in the last lecture.
+// So that's first immutability,
+// second, side effects and pure functions,
+// and third making data transformations
+// using pure functions, such as map filter and reduce.
+// And let's actually start with immutability
+// because in JavaScript, there's actually a way
+// to make a data structure or in other words,
+// to make an array or an object immutable.
